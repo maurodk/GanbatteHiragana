@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ganbatte Hiragana! - Dicionário</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- CSS principal, que agora inclui estilos da navbar -->
+    <link rel="stylesheet" href="/css/dicionario.css" />
+    <!-- CSS específico para o dicionário (cards, etc.) -->
+  </head>
+  <body>
+    <header class="main-navbar">
+      <!-- A MESMA NAVBAR USADA NO INDEX.HTML -->
+      <div class="navbar-section navbar-left">
+        <a href="index.html" class="nav-item">JOGO (QUIZ)</a>
+        <a href="dicionario.html" class="nav-item active">DICIONÁRIO</a>
+        <!-- Link "DICIONÁRIO" está ativo nesta página -->
+      </div>
+      <div class="navbar-section navbar-center">
+        <div class="navbar-subtitle">がんばって ひらがな！</div>
+        <h1 class="navbar-title">GANBATTE HIRAGANA!</h1>
+      </div>
+      <div class="navbar-section navbar-right">
+        <a href="memoria.html" class="nav-item">MEMÓRIA</a>
+        <!-- Placeholder -->
+        <a href="ditado.html" class="nav-item">DITADO</a>
+        <!-- Placeholder -->
+      </div>
+    </header>
+
+    <div class="container container-dicionario">
+      <!-- .container para a margem do topo, .container-dicionario para estilos específicos -->
+      <div class="search-controls">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Buscar por Hiragana, Romaji ou Tradução..."
+        />
+      </div>
+
+      <div id="dictionary-list" class="dictionary-grid">
+        <!-- As palavras serão inseridas aqui pelo JavaScript (dicionario.js) -->
+      </div>
+    </div>
+
+    <!-- Scripts: palavras.js DEVE vir antes de dicionario.js -->
+    <script src="/js/palavras.js"></script>
+    <script src="/js/dicionario.js"></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ganbatte Hiragana! - Ditado</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- CSS principal (inclui navbar e variáveis) -->
+    <link rel="stylesheet" href="/css/ditado.css" />
+    <!-- CSS específico para o ditado -->
+  </head>
+  <body>
+    <header class="main-navbar">
+      <div class="navbar-section navbar-left">
+        <a href="/src/index.html" class="nav-item">JOGO (QUIZ)</a>
+        <a href="/src/dicionario.html" class="nav-item">DICIONÁRIO</a>
+      </div>
+      <div class="navbar-section navbar-center">
+        <div class="navbar-subtitle">がんばって ひらがな！</div>
+        <h1 class="navbar-title">GANBATTE HIRAGANA!</h1>
+      </div>
+      <div class="navbar-section navbar-right">
+        <a href="/src/memoria.html" class="nav-item">MEMÓRIA</a>
+        <a href="/src/ditado.html" class="nav-item active">DITADO</a>
+        <!-- Link ativo nesta página -->
+      </div>
+    </header>
+
+    <div class="container container-ditado-main">
+      <!-- Container principal para o layout -->
+      <div class="ditado-game-content">
+        <!-- Coluna Esquerda/Principal para o jogo -->
+        <h2 class="game-title">Ditado: Romaji para Hiragana</h2>
+
+        <div class="challenge-area">
+          <p class="instruction-text">Digite o Hiragana correspondente a:</p>
+          <div id="romaji-prompt" class="romaji-prompt-display">ro-ma-ji</div>
+        </div>
+
+        <div class="answer-input-area">
+          <input
+            type="text"
+            id="hiragana-answer"
+            lang="ja"
+            placeholder="Digite ou clique abaixo..."
+            autocomplete="off"
+          />
+          <button id="check-answer-btn">Verificar</button>
+        </div>
+
+        <div id="feedback-message" class="feedback-message">
+          <!-- Feedback será mostrado aqui -->
+        </div>
+
+        <div id="virtual-keyboard-area">
+          <div id="hiragana-keyboard" class="hiragana-keyboard-grid">
+            <!-- Botões do teclado -->
+          </div>
+        </div>
+
+        <div class="game-stats">
+          <div>Corretas: <span id="correct-count">0</span></div>
+          <div id="lives-display">
+            Vidas: <span id="lives-count">❤️❤️❤️</span>
+          </div>
+          <div>Incorretas: <span id="incorrect-count">0</span></div>
+        </div>
+      </div>
+
+      <div class="game-log-panel">
+        <!-- Coluna Direita para o Log -->
+        <h3 class="log-title">Histórico de Tentativas</h3>
+        <ul id="log-list" class="log-list-items">
+          <!-- Entradas do log serão adicionadas aqui -->
+          <li class="log-placeholder">Seu histórico aparecerá aqui...</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="/js/hiraganaPares.js"></script>
+    <!-- Certifique-se que este arquivo existe e está correto -->
+    <script src="/js/ditado.js"></script>
+  </body>
+</html>

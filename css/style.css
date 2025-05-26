@@ -1,0 +1,412 @@
+/* style.css (Completo) */
+
+/* Variáveis de Cor */
+:root {
+  --bg-color: #f0f0f0;
+  --container-bg-color: #fff;
+  --text-color: #333;
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --hiragana-color: #4a4a4a;
+  --romaji-color: #555; /* Para o romaji da palavra principal do jogo */
+  --input-border-color: #ccc;
+  --correct-color: green;
+  --incorrect-color: red;
+  --fire-streak-color: #ff7f50; /* Coral */
+  --fire-streak-shadow1: #ff7f50;
+  --fire-streak-shadow2: #ff4500; /* OrangeRed */
+  --hint-text-color: #6c757d;
+  --button-secondary-bg: #6c757d;
+  --button-secondary-hover-bg: #5a6268;
+  --title-subtitle-color: #777; /* Para o subtítulo da navbar */
+  --main-title-color: #333; /* Para o título principal da navbar */
+  --image-border-color: #ddd;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --container-bg-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --hiragana-color: #e0e0e0;
+  --romaji-color: #b0b0b0;
+  --input-border-color: #444;
+  --correct-color: #4caf50;
+  --incorrect-color: #f44336;
+  --fire-streak-color: #ff7f50;
+  --fire-streak-shadow1: #ff7f50;
+  --fire-streak-shadow2: #ff4500;
+  --hint-text-color: #adb5bd;
+  --button-secondary-bg: #495057;
+  --button-secondary-hover-bg: #343a40;
+  --title-subtitle-color: #aaa;
+  --main-title-color: #e0e0e0;
+  --image-border-color: #555;
+}
+
+body {
+  font-family: "Arial", "Meiryo", "Hiragino Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- ESTILOS DA NOVA NAVBAR --- */
+header.main-navbar {
+  /* Adicionando 'header' para especificidade, caso haja outros .main-navbar */
+  background-color: var(--container-bg-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.navbar-left {
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+.navbar-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px; /* Reduzir um pouco se necessário para caber mais itens nas laterais */
+  flex-shrink: 0; /* Impede que o centro encolha demais */
+}
+
+.navbar-right {
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.navbar-subtitle {
+  font-size: 0.9em;
+  color: var(--title-subtitle-color);
+  margin-bottom: -2px;
+  font-family: "Meiryo", "Hiragino Sans", sans-serif;
+}
+
+.navbar-title {
+  font-size: 1.8em;
+  color: var(--main-title-color);
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--text-color);
+  margin: 0 10px; /* Espaçamento entre os links, ajustável */
+  padding: 8px 10px;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+}
+
+.nav-item.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+body.dark-mode .main-navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .nav-item {
+  color: var(
+    --text-color
+  ); /* Garante que os links usem a cor de texto do modo escuro */
+}
+
+body.dark-mode .nav-item:hover {
+  background-color: var(--bg-color);
+  color: var(--primary-hover-color);
+}
+
+body.dark-mode .nav-item.active {
+  color: var(--primary-hover-color);
+}
+/* --- FIM DOS ESTILOS DA NAVBAR --- */
+
+/* Conteúdo Principal da Página */
+.container {
+  background-color: var(--container-bg-color);
+  padding: 20px 30px 30px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 500px; /* Max-width para o conteúdo do jogo/dicionário */
+  transition: background-color 0.3s;
+  margin-top: 80px; /* Ajuste este valor com base na altura final da sua navbar */
+  /* Ex: Se a navbar tiver 60px de altura, coloque 70px ou 80px aqui */
+}
+
+#controls-area {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+#dark-mode-toggle {
+  padding: 6px 10px;
+  font-size: 1.5em;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+  background-color: var(--button-secondary-hover-bg);
+  color: white;
+}
+
+#word-display-area {
+  margin-bottom: 25px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#romaji-display {
+  /* Romaji da palavra do jogo */
+  font-size: 1.5em;
+  color: var(--romaji-color);
+  margin-bottom: 5px;
+}
+
+#hiragana-display {
+  /* Hiragana da palavra do jogo */
+  font-size: 5em;
+  font-weight: bold;
+  color: var(--hiragana-color);
+  line-height: 1.1;
+  font-family: "Meiryo", "Hiragino Sans", sans-serif;
+}
+
+#input-area {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+#answer-input {
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid var(--input-border-color);
+  border-radius: 5px 0 0 5px;
+  width: 60%;
+  background-color: var(--container-bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#submit-btn {
+  padding: 12px 20px;
+  font-size: 1em;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit-btn:hover {
+  background-color: var(--primary-hover-color);
+}
+
+#hint-controls {
+  margin-bottom: 5px;
+}
+
+#hint-btn {
+  padding: 8px 15px;
+  font-size: 0.9em;
+  background-color: var(--button-secondary-bg);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#hint-btn:hover {
+  background-color: var(--button-secondary-hover-bg);
+}
+
+#hint-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#hint-display-area {
+  min-height: 25px;
+  margin-bottom: 15px;
+  font-style: italic;
+  color: var(--hint-text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#hint-text {
+  margin-bottom: 10px;
+}
+
+#hint-image {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+  display: none;
+  border: 1px solid var(--image-border-color);
+  transition: border-color 0.3s;
+}
+
+.no-image-fallback {
+  /* Para o texto "SEM IMAGEM" */
+  display: none;
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--hint-text-color);
+}
+
+#feedback-area {
+  min-height: 30px;
+  margin-bottom: 15px;
+}
+
+#feedback-text {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.correct {
+  color: var(--correct-color);
+}
+
+.incorrect {
+  color: var(--incorrect-color);
+}
+
+#streak-counter-area {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#streak-counter.fire-streak {
+  color: var(--fire-streak-color);
+  font-weight: bold;
+  animation: pulseFire 1s infinite alternate;
+}
+
+/* Efeitos e Animações */
+.correct-flash-effect {
+  animation: correctFlash 0.5s ease-out;
+}
+
+@keyframes correctFlash {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: rgba(144, 238, 144, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+}
+
+body.dark-mode .correct-flash-effect {
+  animation: correctFlashDark 0.5s ease-out;
+}
+
+@keyframes correctFlashDark {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    background-color: rgba(76, 175, 80, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+}
+
+@keyframes pulseFire {
+  from {
+    text-shadow: 0 0 5px var(--fire-streak-shadow1),
+      0 0 10px var(--fire-streak-shadow2);
+  }
+  to {
+    text-shadow: 0 0 10px var(--fire-streak-shadow1),
+      0 0 20px var(--fire-streak-shadow2);
+  }
+}
+
+.streak-5-effect {
+  /* Efeito de 5 acertos */
+  animation: streak5Celebration 1.5s ease-out;
+}
+
+@keyframes streak5Celebration {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.2) rotate(-5deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.2) rotate(-2deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}

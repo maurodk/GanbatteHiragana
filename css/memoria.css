@@ -1,0 +1,303 @@
+/* memoria.css */
+
+/* Container principal da página do jogo da memória */
+.container-memoria-main {
+  display: flex;
+  flex-wrap: wrap; /* Permite que quebre em telas menores */
+  gap: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.config-panel {
+  flex: 1;
+  min-width: 280px;
+  padding: 20px;
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  align-self: flex-start;
+}
+
+body.dark-mode .config-panel {
+  background-color: #2a2a2a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.panel-title,
+.game-section-title {
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--input-border-color);
+  padding-bottom: 10px;
+}
+
+.config-group {
+  margin-bottom: 20px;
+}
+
+.config-group > label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+#num-pairs-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid var(--input-border-color);
+  background-color: var(--container-bg-color);
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+/* Estilos para os Interruptores (Toggles) */
+.toggle-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toggle-switch-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  margin-right: 10px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 28px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.toggle-label {
+  font-size: 0.95em;
+  color: var(--text-color);
+  cursor: pointer;
+  user-select: none;
+}
+
+body.dark-mode .slider {
+  background-color: #555;
+}
+
+body.dark-mode input:checked + .slider {
+  background-color: var(--primary-hover-color);
+}
+/* --- Fim dos estilos dos Interruptores --- */
+
+#start-game-button {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1.1em;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+#start-game-button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.stats-area {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid var(--input-border-color);
+}
+.stats-area div {
+  margin-bottom: 8px;
+  font-size: 1em;
+  color: var(--text-color);
+}
+#current-streak.fire-streak {
+  color: var(--fire-streak-color);
+  font-weight: bold;
+  animation: pulseFire 1s infinite alternate;
+}
+
+.game-area {
+  flex: 2;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memory-board {
+  display: grid;
+  gap: 8px;
+  perspective: 1000px; /* Essencial para o efeito 3D */
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 20px;
+}
+
+.board-placeholder {
+  color: var(--hint-text-color);
+  font-style: italic;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.card {
+  background-color: transparent; /* O fundo será definido por .card-face ou .card-back */
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative; /* Para posicionamento absoluto dos filhos */
+  transform-style: preserve-3d; /* Essencial para o efeito 3D */
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Estado virado (seja temporariamente ou por ser um par) */
+.card.flipped,
+.card.matched {
+  transform: rotateY(180deg);
+  cursor: default;
+}
+
+/* Estilos específicos para quando um par é encontrado */
+.card.matched .card-face {
+  /* Aplica borda e outros na face quando o par é encontrado */
+  border: 2px solid var(--correct-color);
+}
+.card.matched {
+  /* Aplica opacidade no card como um todo */
+  opacity: 0.85;
+}
+
+/* Frente e Verso da Carta */
+.card-face,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden; /* Esconde o lado que não está virado para o usuário */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: inherit;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .card-face,
+body.dark-mode .card-back {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card-face {
+  /* Conteúdo da carta (Hiragana/Romaji) */
+  background-color: var(--container-bg-color);
+  color: var(--hiragana-color);
+  border: 1px solid var(--input-border-color);
+  transform: rotateY(180deg); /* A frente começa "virada para trás" */
+  font-size: 1.8em; /* Ajuste conforme o número de cartas/colunas */
+  font-family: "Meiryo", "Hiragino Sans", sans-serif;
+}
+
+.card-back {
+  /* Verso da carta (o "?") */
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.5em; /* Tamanho do "?" */
+  border: 1px solid var(--primary-hover-color);
+  /* Nenhuma transformação de rotação aqui, pois ele já está "virado para frente" inicialmente */
+}
+
+/* Mensagem de Vitória */
+.win-message {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border: 1px solid var(--correct-color);
+  border-radius: 8px;
+  color: var(--correct-color);
+  text-align: center;
+}
+body.dark-mode .win-message {
+  background-color: rgba(76, 175, 80, 0.2);
+}
+
+#play-again-config-button {
+  padding: 10px 15px;
+  font-size: 1em;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+#play-again-config-button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.hidden {
+  display: none !important;
+}

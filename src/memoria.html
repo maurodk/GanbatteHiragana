@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ganbatte Hiragana! - Jogo da Memória</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- CSS principal (inclui navbar e variáveis) -->
+    <link rel="stylesheet" href="/css/memoria.css" />
+    <!-- CSS específico para o jogo da memória -->
+  </head>
+  <body>
+    <header class="main-navbar">
+      <div class="navbar-section navbar-left">
+        <a href="/src/index.html" class="nav-item">JOGO (QUIZ)</a>
+        <a href="/src/dicionario.html" class="nav-item">DICIONÁRIO</a>
+      </div>
+      <div class="navbar-section navbar-center">
+        <div class="navbar-subtitle">がんばって ひらがな！</div>
+        <h1 class="navbar-title">GANBATTE HIRAGANA!</h1>
+      </div>
+      <div class="navbar-section navbar-right">
+        <a href="/src/memoria.html" class="nav-item active">MEMÓRIA</a>
+        <!-- Link ativo nesta página -->
+        <a href="/src/ditado.html" class="nav-item">DITADO</a>
+        <!-- Placeholder -->
+      </div>
+    </header>
+
+    <div class="container container-memoria-main">
+      <!-- Container principal para layout de duas colunas -->
+      <div class="config-panel">
+        <h2 class="panel-title">Configurações do Jogo</h2>
+
+        <div class="config-group">
+          <label for="num-pairs-select">Número de Pares:</label>
+          <select id="num-pairs-select">
+            <option value="8">Pequeno (8 pares)</option>
+            <option value="12" selected>Médio (12 pares)</option>
+            <option value="16">Grande (16 pares)</option>
+            <option value="20">Extra (20 pares)</option>
+            <!-- Opções para mais pares podem ser adicionadas se o hiraganaPares.js tiver Yōon completo -->
+          </select>
+        </div>
+
+        <div class="config-group">
+          <label>Conteúdo dos Pares:</label>
+          <div class="toggle-group">
+            <div class="toggle-switch-container">
+              <label class="toggle-switch">
+                <input type="checkbox" id="cb-gojuon" value="gojuon" checked />
+                <span class="slider round"></span>
+              </label>
+              <span class="toggle-label">Gojūon (Básicos)</span>
+            </div>
+            <div class="toggle-switch-container">
+              <label class="toggle-switch">
+                <input
+                  type="checkbox"
+                  id="cb-dakuten"
+                  value="dakuten"
+                  checked
+                />
+                <span class="slider round"></span>
+              </label>
+              <span class="toggle-label">Dakuten (゛)</span>
+            </div>
+            <div class="toggle-switch-container">
+              <label class="toggle-switch">
+                <input
+                  type="checkbox"
+                  id="cb-handakuten"
+                  value="handakuten"
+                  checked
+                />
+                <span class="slider round"></span>
+              </label>
+              <span class="toggle-label">Handakuten (゜)</span>
+            </div>
+            <div class="toggle-switch-container">
+              <label class="toggle-switch">
+                <input type="checkbox" id="cb-yoon" value="yoon" />
+                <!-- Pode vir desmarcado por padrão se forem muitos -->
+                <span class="slider round"></span>
+              </label>
+              <span class="toggle-label">Yōon (Combinados)</span>
+            </div>
+          </div>
+        </div>
+
+        <button id="start-game-button">Iniciar Jogo</button>
+
+        <div class="stats-area">
+          <div id="score-info">
+            Pares Encontrados: <span id="pairs-matched">0</span> /
+            <span id="total-pairs-game">0</span>
+          </div>
+          <div id="streak-info">
+            Sequência de Acertos: <span id="current-streak">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-area">
+        <h2 class="game-section-title">Jogo da Memória</h2>
+        <div class="memory-board" id="memory-board">
+          <p class="board-placeholder">Configure e inicie o jogo ao lado!</p>
+          <!-- As cartas serão geradas aqui pelo JavaScript -->
+        </div>
+        <div id="win-message" class="win-message hidden">
+          <p>Parabéns, você encontrou todos os pares!</p>
+          <button id="play-again-config-button">
+            Jogar Novamente com Mesmas Configurações
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/hiraganaPares.js"></script>
+    <script src="/js/memoria.js"></script>
+  </body>
+</html>

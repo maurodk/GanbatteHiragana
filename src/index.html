@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ganbatte Hiragana! - Jogo</title>
+    <!-- Mude o título conforme a página -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- <link rel="stylesheet" href="dicionario.css"> se houver estilos específicos que não foram movidos para style.css -->
+  </head>
+  <body>
+    <header class="main-navbar">
+      <div class="navbar-section navbar-left">
+        <a href="./index.html" class="nav-item active">JOGO (QUIZ)</a>
+        <!-- Link para a página principal do jogo/quiz -->
+        <a href="./dicionario.html" class="nav-item">DICIONÁRIO</a>
+      </div>
+      <div class="navbar-section navbar-center">
+        <div class="navbar-subtitle">がんばって ひらがな！</div>
+        <h1 class="navbar-title">GANBATTE HIRAGANA!</h1>
+      </div>
+      <div class="navbar-section navbar-right">
+        <a href="./memoria.html" class="nav-item">MEMÓRIA</a>
+        <!-- Placeholder, crie memoria.html depois -->
+        <a href="./ditado.html" class="nav-item">DITADO</a>
+        <!-- Placeholder, crie ditado.html depois -->
+      </div>
+    </header>
+
+    <!-- Conteúdo principal da página (seja do jogo ou do dicionário) -->
+    <div class="container">
+      <!-- Se for index.html, aqui vai o conteúdo do jogo -->
+      <!-- Se for dicionario.html, aqui vai o conteúdo do dicionário -->
+      <!-- Exemplo para index.html: -->
+      <div id="controls-area">
+        <button id="dark-mode-toggle" title="Alternar tema"></button>
+      </div>
+      <div id="word-display-area">
+        <div id="romaji-display"></div>
+        <div id="hiragana-display"></div>
+      </div>
+      <div id="input-area">
+        <input type="text" id="answer-input" placeholder="Qual a tradução?" />
+        <button id="submit-btn">Verificar</button>
+      </div>
+      <div id="hint-controls">
+        <button id="hint-btn">Mostrar Dica</button>
+      </div>
+      <div id="hint-display-area">
+        <p id="hint-text"></p>
+        <img id="hint-image" src="" alt="" />
+        <p id="no-image-text" class="no-image-fallback">SEM IMAGEM</p>
+      </div>
+      <div id="feedback-area">
+        <p id="feedback-text"></p>
+      </div>
+      <div id="streak-counter-area">
+        <span id="streak-counter">Sequência: 0</span>
+      </div>
+    </div>
+
+    <script src="/js/palavras.js"></script>
+    <script src="/js/script.js"></script>
+    <!-- ou dicionario.js, dependendo da página -->
+  </body>
+</html>
