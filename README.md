@@ -30,9 +30,12 @@ Usuário deve escrever corretamente o símbolo correspondente.
 
 Sistema de validação de resposta e progresso.
 ---
-🛠️ Tecnologias Utilizadas
-Tecnologia	Versão/Descrição
-HTML5	Estrutura e semântica
-CSS3	Estilização responsiva
-JavaScript	Lógica do cliente e interação
-Áudio Web API	Reprodução de ditado
+## 🛠️ Tecnologias Utilizadas
+
+| 🧩 Tecnologia     | 📄 Versão / Descrição                  |
+|------------------|----------------------------------------|
+| HTML5            | Estrutura e semântica                  |
+| CSS3             | Estilização responsiva                 |
+| JavaScript       | Lógica do cliente e interação          |
+| Áudio Web API    | Reprodução de ditado                   |
+
