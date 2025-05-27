@@ -1,4 +1,4 @@
-Ganbatte Hiragana!
+# Ganbatte Hiragana!
 Plataforma interativa para estudo do alfabeto Hiragana, oferecendo múltiplas abordagens pedagógicas como quiz, jogo da memória, dicionário visual e ditado fonético. O projeto é totalmente desenvolvido com HTML5, CSS3 e JavaScript Vanilla (sem frameworks ou bibliotecas externas).
 
 📌 Funcionalidades
