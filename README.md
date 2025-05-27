@@ -24,7 +24,6 @@ Ao clicar no caractere, exibe leitura (romaji), pronúncia em áudio e exemplos 
 Opção de busca por leitura ou símbolo.
 ---
 🗣️ Ditado
-Áudios gerados com pronúncia dos caracteres.
 
 Usuário deve escrever corretamente o símbolo correspondente.
 
@@ -32,10 +31,9 @@ Sistema de validação de resposta e progresso.
 ---
 ## 🛠️ Tecnologias Utilizadas
 
-| 🧩 Tecnologia     | 📄 Versão / Descrição                  |
+| 🧩 Tecnologia     | 📄 Versão / Descrição                 |
 |------------------|----------------------------------------|
 | HTML5            | Estrutura e semântica                  |
 | CSS3             | Estilização responsiva                 |
-| JavaScript       | Lógica do cliente e interação          |
-| Áudio Web API    | Reprodução de ditado                   |
+| JavaScript       | Lógica do cliente e interação          |      
 
